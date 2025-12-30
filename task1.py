@@ -1,5 +1,6 @@
 from pulp import LpMaximize, LpProblem, LpVariable, LpStatus, value
 
+
 """
 Створити задачу, змінні з кордонами (>=0) та додати цільову функцію
 """
@@ -8,6 +9,7 @@ lemonade = LpVariable("Lemonade", lowBound=0, cat="Integer")
 juice = LpVariable("Fruit Juice", lowBound=0, cat="Integer")
 model += lemonade + juice, "Maximize production"
 
+
 """
 Додати обмеження:
 Вода 2L+1J <= 100
@@ -15,11 +17,11 @@ model += lemonade + juice, "Maximize production"
 Лимонний сік 1L ≤ 30
 Фруктове пюре: 2J ≤ 40
 """
-
 model += 2 * lemonade + 1 * juice <= 100, "Water constraint"
 model += 1 * lemonade <= 50, "Sugar constraint"
 model += 1 * lemonade <= 30, "Lemon juice constraint"
 model += 2 * juice <= 40, "Fruit puree constraint"
+
 
 if __name__ == "__main__":
     """
